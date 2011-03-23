@@ -521,10 +521,10 @@ if ((Gear^.State and (gstAttacking or gstMoving)) = 0) then
         with CurWeapon^ do
           begin
           if (Gear^.Message and gmLeft  ) <> 0 then
-             Pos:= (Pos - 1 + Ammoz[AmmoType].PosCount) mod Ammoz[AmmoType].PosCount
+             //Pos:= (Pos - 1 + Ammoz[AmmoType].PosCount) mod Ammoz[AmmoType].PosCount
           else
           if (Gear^.Message and gmRight ) <> 0 then
-             Pos:= (Pos + 1) mod Ammoz[AmmoType].PosCount
+             //Pos:= (Pos + 1) mod Ammoz[AmmoType].PosCount
           else exit;
           StepTicks:= 200;
           exit
@@ -570,8 +570,8 @@ if ((Gear^.State and (gstAttacking or gstMoving)) = 0) then
       end;
 
    PrevdX:= hwSign(Gear^.dX);
-   if (Gear^.Message and gmLeft  )<>0 then Gear^.dX:= -cLittle else
-   if (Gear^.Message and gmRight )<>0 then Gear^.dX:=  cLittle else exit;
+   //if (Gear^.Message and gmLeft  )<>0 then Gear^.dX:= -cLittle else
+   //if (Gear^.Message and gmRight )<>0 then Gear^.dX:=  cLittle else exit;
 
    if (Gear^.Message and (gmLeft or gmRight)) <> 0 then
       begin
@@ -649,7 +649,6 @@ begin
 with HHGear^.Hedgehog^ do
     if (CurAmmoType = amRope)
     and ((HHGear^.State and (gstMoving or gstHHJumping)) = gstMoving) then da:= 50 else da:= 100;
-writeln(stdout,HHGear^.Angle);
 if ((TurnTimeLeft mod 20000) <= 19002) and ((TurnTimeLeft mod 20000) > 0) then
      begin
         if ((TurnTimeLeft mod 20000) <= 2) and ((TurnTimeLeft mod 20000) > 0) then HHGear^.Angle:=0;
